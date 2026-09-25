@@ -61,13 +61,13 @@ const Landing = () => {
     <>
       <main className='container flex flex-col lg:flex-row gap-4  mx-auto p-4 bg-white/30 backdrop-blur-md drop-shadow-2xl xl:max-w-7xl'>
         <section className='flex-1 md:m-10 '>
-          <div className='text-5xl '>Lanzamiento Eucerin</div>
-          <h1 className='text-7xl  flex flex-col'>
+          <div className='text-xl sm:text-2xl  xl:text-4xl '>Lanzamiento Eucerin</div>
+          <h1 className='text-4xl sm:text-5xl lg:text-5xl xl:text-6xl  flex flex-col'>
             Unlocking
             <strong>Skin longevity</strong>
           </h1>
 
-          <p className='text-xl my-6'>
+          <p className='text:lg md:text-xl my-6'>
             Completa el registro con tus datos para <br />
             confirmar tu participación
           </p>
@@ -115,7 +115,7 @@ const Landing = () => {
                 <div className='flex flex-col gap-1'>
                   <TextField className='w-full' name={field.name} isInvalid={Boolean(errors.name)}>
                     <Label className='font-bold text-lg'>Nombre</Label>
-                    <InputGroup>
+                    <InputGroup className='p-2'>
                       <InputGroup.Prefix>
                         <User2 className='text-accent opacity-70' />
                       </InputGroup.Prefix>
@@ -133,7 +133,7 @@ const Landing = () => {
                 <div className='flex flex-col gap-1'>
                   <TextField className='w-full' name={field.name} isInvalid={Boolean(errors.email)}>
                     <Label className='font-bold text-lg'>Correo electrónico</Label>
-                    <InputGroup>
+                    <InputGroup className='p-2'>
                       <InputGroup.Prefix>
                         <Mail className='text-accent opacity-70' />
                       </InputGroup.Prefix>
