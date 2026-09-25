@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+
+body {
+    @apply flex flex-col min-h-dvh p-15 2xl:py-0 2xl:justify-center;
+    background-image: url('/src/assets/bg-landing.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* .container {
+    @apply;
+} */
