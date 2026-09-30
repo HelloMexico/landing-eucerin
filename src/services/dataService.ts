@@ -7,6 +7,11 @@ export async function registration(userData: UserData): Promise<{ success: boole
 
     if (error) throw error
 
+    const emailResponse = await sendWelcomeEmail(userData.email, userData.name)
+    if (!emailResponse.ok) {
+      console.error('Error sending welcome email:', emailResponse.error)
+    }
+
     return { success: true }
   } catch (error) {
     const outputError = (error as any).message || 'Error desconocido'
@@ -22,4 +27,39 @@ export async function registration(userData: UserData): Promise<{ success: boole
 
     return { success: false, error: returnError }
   }
+}
+
+export async function sendWelcomeEmail(email: string, name: string): Promise<{ ok: boolean; error?: unknown }> {
+  try {
+    const response = await fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name })
+    })
+    const responseText = await response.text()
+    let body: unknown = responseText
+    try {
+      body = responseText ? JSON.parse(responseText) : {}
+    } catch {
+      // Netlify, a proxy, or the email provider may return plain text/HTML on errors.
+    }
+
+    if (!response.ok) {
+      return { ok: false, error: `HTTP ${response.status}: ${formatResponseBody(body)}` }
+    }
+
+    if (typeof body === 'object' && body !== null && 'ok' in body && body.ok === false) {
+      return { ok: false, error: body }
+    }
+
+    return { ok: true }
+  } catch (error) {
+    console.error('Error sending welcome email:', error)
+    return { ok: false, error }
+  }
+}
+
+function formatResponseBody(body: unknown): string {
+  if (typeof body === 'string') return body || '(respuesta vacía)'
+  return JSON.stringify(body)
 }
