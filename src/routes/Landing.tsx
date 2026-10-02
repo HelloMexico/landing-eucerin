@@ -50,19 +50,6 @@ const Landing = () => {
     }
   }
 
-  const profileOptions = [
-    {
-      icon: User2,
-      title: 'Influencer dermatológico',
-      value: 'influencer'
-    },
-    {
-      icon: User2,
-      title: 'Profesional de la salud',
-      value: 'profesional'
-    }
-  ]
-
   if (wasSent) {
     return (
       <main className='success-message flex flex-col lg:flex-row gap-4  mx-auto p-4 bg-white/30 backdrop-blur-md md:max-w-xl'>
