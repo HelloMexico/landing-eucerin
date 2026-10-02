@@ -3,12 +3,22 @@
 
 
 body {
-    @apply flex flex-col min-h-dvh sm:p-15 2xl:py-0 2xl:justify-center;
-    background-image: url('/src/assets/bg-landing.webp');
+    @apply flex flex-col min-h-dvh sm:p-5 2xl:py-0 2xl:justify-center text-[#152238];
+    background-image: url('/src/assets/bg-eucerin.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     font-family: 'Montserrat', sans-serif;
+}
+
+.decoration-skin {
+    background-image: url('/src/assets/banda_iris.png');
+    width: fit-content;
+
+}
+
+.btn-lumi {
+    background-image: url('/src/assets/banda_iris.png');
 }
 
 /* .container {

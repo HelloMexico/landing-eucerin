@@ -5,31 +5,13 @@ import { Body, Column, Container, Head, Html, Img, Preview, Row, Section, Tailwi
 import { Fonts } from './Fonts'
 import { emailTailwindConfig } from './theme'
 
-const env = (
-  globalThis as typeof globalThis & {
-    process?: { env?: Record<string, string | undefined> }
-  }
-).process?.env
-const baseUrl = env?.VITE_HOST_URL ? `https://${env.VITE_HOST_URL}` : 'http://localhost:3000/'
-
-type FeatureRow = {
-  title: string
-  description: string
-  ctaLabel: string
-  imageSrc: string
-}
-
-type HighlightItem = {
-  title: string
-  description: string
-}
-
 interface FeatureAnnouncementEmailProps {
   name: string
   email: string
+  baseUrl: string
 }
 
-export const FeatureAnnouncementEmail = ({ name }: FeatureAnnouncementEmailProps) => {
+export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementEmailProps) => {
   if (!React) return null
 
   return (
@@ -139,7 +121,8 @@ export const FeatureAnnouncementEmail = ({ name }: FeatureAnnouncementEmailProps
 
 FeatureAnnouncementEmail.PreviewProps = {
   name: 'Edgar Moreira Ortiz',
-  email: 'prueba@mail.com'
+  email: 'prueba@mail.com',
+  baseUrl: 'http://localhost:3000'
 } satisfies FeatureAnnouncementEmailProps
 
 export default FeatureAnnouncementEmail

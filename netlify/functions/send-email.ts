@@ -23,7 +23,16 @@ export const handler: Handler = async (event) => {
     }
 
     // 4) Render email
-    const emailElement = React.createElement(RegisterEmail, { name, email })
+    const configuredBaseUrl =
+      process.env.VITE_HOST_URL || process.env.URL || process.env.DEPLOY_PRIME_URL
+    if (!configuredBaseUrl) {
+      throw new Error('Configura VITE_HOST_URL o asegúrate de que Netlify exponga URL/DEPLOY_PRIME_URL.')
+    }
+    const baseUrl = /^https?:\/\//i.test(configuredBaseUrl)
+      ? configuredBaseUrl.replace(/\/$/, '')
+      : `https://${configuredBaseUrl.replace(/\/$/, '')}`
+
+    const emailElement = React.createElement(RegisterEmail, { name, email, baseUrl })
     const html = await render(emailElement)
 
     const devMode = process.env.DEV_MODE?.trim().toLowerCase() === 'true'
