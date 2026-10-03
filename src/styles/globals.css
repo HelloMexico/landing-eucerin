@@ -21,6 +21,12 @@ body {
     background-image: url('/src/assets/banda_iris.png');
 }
 
+@media screen and (max-width: 640px) {
+    body {
+        background-position: calc(100% + 830px) center;
+    }
+}
+
 /* .container {
     @apply;
 } */
