@@ -3,7 +3,7 @@
 
 
 body {
-    @apply flex flex-col min-h-dvh sm:p-5 2xl:py-0 2xl:justify-center text-[#152238];
+    @apply flex flex-col min-h-dvh justify-center items-center sm:p-5 text-[#152238];
     background-image: url('/src/assets/bg-eucerin.webp');
     background-size: cover;
     background-position: center;

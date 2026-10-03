@@ -1,4 +1,4 @@
-import { Button, Checkbox, InputGroup, Label, ListBox, Select, TextField } from '@heroui/react'
+import { Button, Checkbox, InputGroup, Label, ListBox, Modal, Select, TextField } from '@heroui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight, Calendar, Check, Mail, MapPin, User2, UserRoundGroup } from 'lucide-react'
 import { useState } from 'react'
@@ -36,6 +36,8 @@ const Landing = () => {
     }
   })
 
+  const userType = watch('user_type')
+
   const [wasSent, setWasSent] = useState(false)
 
   const termsAccepted = watch('accept_terms')
@@ -52,47 +54,67 @@ const Landing = () => {
 
   if (wasSent) {
     return (
-      <main className='success-message flex flex-col lg:flex-row gap-4  mx-auto p-4 bg-white/30 backdrop-blur-md md:max-w-xl'>
-        <section className='flex-1 md:m-12 text-center space-y-6'>
+      <main className='success-message flex flex-col gap-4  items-center p-4  '>
+        <img src={Logo} className='w-29 mx-auto' alt='' />
+        <section className='flex-1 md:m-5 text-center space-y-4  bg-white/60 backdrop-blur-md p-5 lg:px-20 py-10 rounded-3xl md:w-[625px] '>
           <div className='w-15 h-15 rounded-full bg-accent/10 flex items-center justify-center mb-4 mx-auto'>
             <Check className='text-accent size-8' />
           </div>
-          <h1 className='text-3xl font-bold  flex flex-col'>¡Registro exitoso!</h1>
-          <p className='text:lg md:text-xl  text-balance'>Tu participación en Eucerin Unlocking Skin Longevity ha quedado registrada.</p>
+          <h1 className='text-3xl font-semibold  flex flex-col uppercase m-0'>¡Registro exitoso!</h1>
+          <p className='pt-3 '>
+            Tu participación en Eucerin Unlocking Skin Longevity <br /> ha quedado registrada.
+          </p>
 
           <hr className='' />
 
           <p className='text-lg font-bold'>Te esperamos el 15 de octubre de 2026</p>
-          <p>10:00 – 14:00 h</p>
+          <p>A las {userType === 'influencer' ? '12:30 hrs' : '19:00 hrs'}</p>
 
-          <div className='flex flex-row items-center gap-2 '>
+          <div className='flex flex-row items-center gap-2 justify-center text-left '>
             <MapPin className='text-accent size-10' />
-            MUNET · Museo Nacional de Energía y Tecnología Ciudad de México
+            <div>
+              <strong>InSpace Polanco</strong> <br />
+              Lago Andromaco 84 B, Ampliación Granada
+              <br /> Miguel Hidalgo. CDMX
+            </div>
           </div>
 
-          <div className='w-full bg-accent/20 rounded-lg p-4 text-balance'>
-            Guarda la fecha y la sede del evento. ¡Nos encantará verte ahí!
+          <div className='w-full bg-accent/10 rounded-lg p-4 text-balance text-sm text-[#3E4961]'>
+            Guarda la fecha y la sede del evento. <br /> ¡Nos encantará verte ahí!
           </div>
 
-          <p>¡Nos vemos pronto! </p>
+          <p className='font-semibold text-[#4A3D89] '>¡Nos vemos pronto!</p>
+
+          <div className='sm:px-25'>
+            <Button
+              type='button'
+              fullWidth
+              className='btn-lumi rounded-none border border-white text-lg font-medium text-[#152238] py-6 shadow-xl'
+              onClick={() => {
+                window.location.reload()
+              }}
+            >
+              Finalizar
+            </Button>
+          </div>
         </section>
       </main>
     )
   } else {
     return (
       <>
-        <main className='max-w-[900px] mx-auto gap-4      '>
-          <section>
+        <main className='max-w-[1080px] mx-auto gap-4      '>
+          <section className='flex justify-center lg:justify-start mt-5 '>
             <img src={Logo} className='w-29 ' alt='' />
           </section>
-          <div className='flex flex-col lg:flex-row p-2'>
+          <div className='flex flex-col lg:flex-row gap-10  p-5 pt-0 '>
             <section className='flex-1 mt-5'>
               <div className='text-xl sm:text-2xl  uppercase font-medium tracking-widest pl-3 mb-5'>Registro</div>
               <h1 className=' flex flex-col uppercase'>
-                <span className='px-3 text-[3.5rem] leading-none'>Unlocking</span>
+                <span className='px-3 text-4xl lg:text-[3.5rem] leading-none'>Unlocking</span>
                 <strong className='decoration-skin px-3 py-1 text-4xl sm:text-5xl lg:text-5xl'>Skin longevity</strong>
               </h1>
-              <p className='text-[0.96rem]  px-3 mt-2'>Descubre una nueva era en la longevidad de la piel</p>
+              <p className='text-[0.96rem]  px-3 mt-2 text-balance'>Descubre una nueva era en la longevidad de la piel</p>
               <img src={Separator} className='w-[324px]  my-3' alt='' />
               <p className='  leading-tight mb-2'>
                 Completa tus datos para confirmar <br /> tu participación.
@@ -177,7 +199,57 @@ const Landing = () => {
                         </Checkbox>
                       )}
                     />{' '}
-                    <p className='text-xs text-accent font-semibold '>He leído y acepto los términos y condiciones</p>
+                    <p className='text-xs text-accent font-semibold '>
+                      He leído y acepto los{' '}
+                      <Modal>
+                        <Modal.Trigger className='underline '>términos y condiciones</Modal.Trigger>
+                        <Modal.Backdrop>
+                          <Modal.Container size='lg'>
+                            <Modal.Dialog>
+                              <Modal.CloseTrigger />
+                              <Modal.Header>
+                                <Modal.Heading>Términos y condiciones</Modal.Heading>
+                              </Modal.Header>
+                              <Modal.Body className='space-y-4 text-sm text-[#3E4961]'>
+                                <h2 className='text-lg font-bold text-balance'>AUTORIZACIÓN DE USO DE IMAGEN, VOZ Y TESTIMONIO</h2>
+                                <p>
+                                  Al registrarme y seleccionar <strong>“ACEPTO”</strong>, otorgo de manera libre, expresa e informada mi
+                                  consentimiento a{' '}
+                                  <strong>
+                                    BDF México, S.A. de C.V., sus marcas, afiliadas y sociedades de su grupo, y a DW Agency, S.A. de C.V.,
+                                    sus afiliadas y sociedades de su grupo
+                                  </strong>
+                                  (los “Organizadores”), para captar, grabar, reproducir, editar y utilizar mi imagen, voz, nombre y/o
+                                  testimonio mediante fotografías, video, audio u otros medios durante mi participación en el{' '}
+                                  <strong>Lanzamiento Eucerin Epigenetic del 15 de octubre de 2026.</strong>
+                                </p>
+                                <p>
+                                  Autorizo el uso de dicho material con fines de comunicación, publicidad institucional y/o comercial de los
+                                  Organizadores y sus marcas, incluyendo redes sociales, sitios web, prensa, presentaciones, materiales
+                                  internos y otros medios digitales.
+                                </p>
+                                <p>
+                                  Esta autorización tendrá <strong>alcance mundial y vigencia de 5 años.</strong> El material publicado o
+                                  incorporado a campañas durante dicho periodo podrá continuar utilizándose posteriormente.
+                                </p>{' '}
+                                <p>
+                                  Entiendo que mi participación en el Evento <strong>no genera ningún pago adicional</strong> por el uso de
+                                  mi imagen, voz, nombre o testimonio.
+                                </p>
+                                <p>
+                                  Asimismo, acepto el tratamiento de mis datos personales conforme a los Avisos de Privacidad aplicables y
+                                  reconozco que mi participación en el Evento es voluntaria.
+                                </p>
+                                <p>Declaro que he leído y comprendido esta autorización y que otorgo mi consentimiento libremente.</p>
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button slot='close'>Cerrar</Button>
+                              </Modal.Footer>
+                            </Modal.Dialog>
+                          </Modal.Container>
+                        </Modal.Backdrop>
+                      </Modal>
+                    </p>
                   </div>
                   {errors.accept_terms && <p className='text-sm text-red-600'>{errors.accept_terms.message}</p>}
                 </section>
@@ -196,7 +268,7 @@ const Landing = () => {
               </form>
             </section>
             <section>
-              <aside className=' bg-white/30 backdrop-blur-sm border-gray-300 border  rounded-3xl  min-w-xs lg:max-w-[400px] p-10  '>
+              <aside className=' bg-white/30 backdrop-blur-sm border-gray-300 border  rounded-3xl  min-w-xs lg:max-w-[400px] p-10   '>
                 <img src={Logo} className='w-25 mx-auto ' alt='' />
                 <h3 className='flex flex-col  items-center text-sm font-bold mt-4'>
                   HYALURON-FILLER <span className='text-accent'>+LONGEVITY</span>
