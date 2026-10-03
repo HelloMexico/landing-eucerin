@@ -112,7 +112,7 @@ const Landing = () => {
               <div className='text-xl sm:text-2xl  uppercase font-medium tracking-widest pl-3 mb-5'>Registro</div>
               <h1 className=' flex flex-col uppercase'>
                 <span className='px-3 text-4xl lg:text-[3.5rem] leading-none'>Unlocking</span>
-                <strong className='decoration-skin px-3 py-1 text-4xl sm:text-5xl lg:text-5xl'>Skin longevity</strong>
+                <strong className='decoration-skin px-3 py-1 text-3xl sm:text-5xl lg:text-5xl'>Skin longevity</strong>
               </h1>
               <p className='text-[0.96rem]  px-3 mt-2 text-balance'>Descubre una nueva era en la longevidad de la piel</p>
               <img src={Separator} className='w-[324px]  my-3' alt='' />
@@ -282,7 +282,7 @@ const Landing = () => {
                   CIENCIA HOY,
                   <br /> UNA PIEL CON FUTURO.
                 </div>
-                <ul className='space-y-7 my-10 mx-10'>
+                <ul className='space-y-7 my-10 lg:mx-10'>
                   <li className='flex gap-5 items-center '>
                     <div className='bg-accent/5  p-2 rounded-full w-11  h-11 flex items-center justify-center'>
                       <Calendar className='text-accent' />
@@ -315,7 +315,7 @@ const Landing = () => {
                   </li>
                 </ul>
                 <hr className='mx-8 my-4' />
-                <p className='text-center text-xs text-gray-500 mx-9'>
+                <p className='text-center text-xs text-gray-500 lg:mx-9 '>
                   Acompáñanos a un evento único donde la ciencia y la innovación transforman el futuro de tu piel.
                 </p>
               </aside>
