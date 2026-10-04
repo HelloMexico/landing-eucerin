@@ -28,7 +28,7 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
               <Section className='bg-bg border-stroke rounded-2xl border'>
                 <Section className='p-0'>
                   <Img
-                    src={`${baseUrl}/static/assets-mail/header.png`}
+                    src={`${baseUrl}/assets-mail/header.png`}
                     alt=''
                     width={600}
                     className='block w-full max-w-[600px] border-none rounded-t-2xl'
@@ -54,7 +54,7 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
                       <Row>
                         <Column className='w-[15%] mobile:w-[25%] text-left align-middle'>
                           <Img
-                            src={`${baseUrl}/static/assets-mail/icono-calendar.png`}
+                            src={`${baseUrl}/assets-mail/icono-calendar.png`}
                             alt=''
                             width={44}
                             height={44}
@@ -64,7 +64,7 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
                         <Column className='w-[85%] mobile:w-[75%] align-top'>
                           <Text className='font-11 font-montserrat font-semibold uppercase text-accent m-0 '>Fecha y horario</Text>
                           <Text className='font-15 font-montserrat text-primary font-semibold m-0 '>15 de octubre de 2026</Text>
-                          <Text className='font-12 font-montserrat text-base  m-0'>09:00 hrs - 12:00 hrs</Text>
+                          <Text className='font-12 font-montserrat text-base  m-0'>12:30 hrs</Text>
                         </Column>
                       </Row>
                       <Row>
@@ -75,7 +75,7 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
                       <Row>
                         <Column className='w-[15%] mobile:w-[25%] text-left align-middle'>
                           <Img
-                            src={`${baseUrl}/static/assets-mail/icono-calendar.png`}
+                            src={`${baseUrl}/assets-mail/icono-location.png`}
                             alt=''
                             width={44}
                             height={44}
@@ -86,8 +86,8 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
                           <Text className='font-11 font-montserrat font-semibold uppercase text-accent m-0 '>Sede</Text>
                           <Text className='font-15 font-montserrat text-primary font-semibold m-0 '>InSpace Polanco</Text>
                           <Text className='font-12 font-montserrat text-base  m-0'>
-                            Ciudad de México <br />
-                            Ciudad de México
+                            Lago Andromaco 84 B, Ampliación Granada
+                            <br /> Miguel Hidalgo. CDMX
                           </Text>
                         </Column>
                       </Row>
@@ -122,7 +122,7 @@ export const FeatureAnnouncementEmail = ({ name, baseUrl }: FeatureAnnouncementE
 FeatureAnnouncementEmail.PreviewProps = {
   name: 'Edgar Moreira Ortiz',
   email: 'prueba@mail.com',
-  baseUrl: 'http://localhost:3000'
+  baseUrl: 'https://hello-eucerin.netlify.app'
 } satisfies FeatureAnnouncementEmailProps
 
 export default FeatureAnnouncementEmail

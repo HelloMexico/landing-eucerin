@@ -23,10 +23,9 @@ export const handler: Handler = async (event) => {
     }
 
     // 4) Render email
-    const configuredBaseUrl =
-      process.env.VITE_HOST_URL || process.env.URL || process.env.DEPLOY_PRIME_URL
+    const configuredBaseUrl = process.env.HOST_URL
     if (!configuredBaseUrl) {
-      throw new Error('Configura VITE_HOST_URL o asegúrate de que Netlify exponga URL/DEPLOY_PRIME_URL.')
+      throw new Error('Configura HOST_URL en las variables de entorno.')
     }
     const baseUrl = /^https?:\/\//i.test(configuredBaseUrl)
       ? configuredBaseUrl.replace(/\/$/, '')
@@ -56,6 +55,10 @@ export const handler: Handler = async (event) => {
       subject: 'Registro exitoso',
       html
     })
+
+    console.log('Correo enviado a', recipient)
+
+    //console.log(html)
 
     if (error) {
       console.error('Resend error:', error)
