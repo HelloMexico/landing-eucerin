@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0](https://github.com/SeraphMX/landing-eucerin/compare/v0.0.1...v1.0.0) (2026-10-05)
+
+### Bug Fixes
+
+* Eliminar clase de padding responsivo en el cuerpo para mejorar la consistencia del diseño ([1fa9165](https://github.com/SeraphMX/landing-eucerin/commit/1fa916549c68a5a669172428fab6d7d209d06770))
+
 ## 0.0.1 (2026-10-05)
 
 ### Features
