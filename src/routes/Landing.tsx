@@ -68,7 +68,7 @@ const Landing = () => {
           <hr className='' />
 
           <p className='text-lg font-bold'>Te esperamos el 15 de octubre de 2026</p>
-          <p>A las {userType === 'influencer' ? '12:30 hrs' : '19:00 hrs'}</p>
+          <p>A las {userType === 'influencer' ? '12:30 hrs' : '12:30:00 hrs'}</p>
 
           <div className='flex flex-row items-center gap-2 justify-center text-left '>
             <MapPin className='text-accent size-10' />
