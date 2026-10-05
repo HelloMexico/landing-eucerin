@@ -31,7 +31,12 @@ export async function registration(userData: UserData): Promise<{ success: boole
 
 export async function sendWelcomeEmail(email: string, name: string): Promise<{ ok: boolean; error?: unknown }> {
   try {
-    const response = await fetch('/.netlify/functions/send-email', {
+    const deployService = import.meta.env.VITE_DEPLOY_SERVICE
+    const apiUrl = import.meta.env.VITE_API_URL
+
+    const url = deployService === 'render' ? `${apiUrl.replace(/\/$/, '')}/email` : '/.netlify/functions/send-email'
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, name })

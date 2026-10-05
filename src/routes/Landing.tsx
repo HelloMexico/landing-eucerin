@@ -199,7 +199,7 @@ const Landing = () => {
                         </Checkbox>
                       )}
                     />{' '}
-                    <p className='text-xs text-accent font-semibold '>
+                    <div className='text-xs text-accent font-semibold '>
                       He leído y acepto los{' '}
                       <Modal>
                         <Modal.Trigger className='underline '>términos y condiciones</Modal.Trigger>
@@ -249,7 +249,7 @@ const Landing = () => {
                           </Modal.Container>
                         </Modal.Backdrop>
                       </Modal>
-                    </p>
+                    </div>
                   </div>
                   {errors.accept_terms && <p className='text-sm text-red-600'>{errors.accept_terms.message}</p>}
                 </section>
